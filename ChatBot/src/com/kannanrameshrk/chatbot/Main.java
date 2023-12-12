@@ -2,13 +2,13 @@ package com.kannanrameshrk.chatbot;
 
 import org.json.simple.parser.ParseException;
 
-import com.kannanrameshrk.chatbot.addchoice.SelectChoice;
+import com.kannanrameshrk.chatbot.viewmodel.SelectChoice;
 
-public class Restaurant {
+public class Main {
 
 	public static void main(String[] args) {
 		
-		Restaurant restaurant = new Restaurant();
+		Main restaurant = new Main();
 		restaurant.start();
 	}
 

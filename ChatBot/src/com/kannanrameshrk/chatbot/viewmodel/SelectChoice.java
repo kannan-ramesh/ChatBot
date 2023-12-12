@@ -1,4 +1,4 @@
-package com.kannanrameshrk.chatbot.addchoice;
+package com.kannanrameshrk.chatbot.viewmodel;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -17,14 +17,16 @@ public class SelectChoice {
 	
 	public void addChoice() {
 		int choice;
-		backStack.push(new Menu(0,0));
-		selectchoicevm.print(0,0);
+		if(backStack.isEmpty()) {
+			backStack.push(new Menu(0,0));
+			selectchoicevm.print(0,0);
+		}
 		do {
             @SuppressWarnings("resource")
             Scanner input = new Scanner(System.in);
-           
+            System.out.println("Select the Menu:");
             choice = input.nextInt();
-
+              
             if (choice == 9) {
                 backStack.pop();
 
@@ -40,12 +42,7 @@ public class SelectChoice {
     			System.out.println("9-Back");
     			System.out.println("0-Exit");
     		}
-            if (top.getStep() != choice) {
-                System.out.println("please select valid menu items..");
-                backStack.pop();
-            }
             selectchoicevm.print(top.getStep(), top.getChoice());
-
         } while (choice != 0);
 		System.out.println("Thank you for visiting our website...");
 		System.exit(0);

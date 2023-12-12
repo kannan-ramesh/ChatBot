@@ -1,4 +1,4 @@
-package com.kannanrameshrk.chatbot.addchoice;
+package com.kannanrameshrk.chatbot.viewmodel;
 
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import com.kannanrameshrk.chatbot.repository.ChatBotRepository;
 
 public class AddChoiceViewModel {
+	@SuppressWarnings("unused")
 	private SelectChoice selectchoice;
 	private ChatBotRepository dat;
 	ArrayList<String> choiceList = new ArrayList<>();
@@ -26,15 +27,20 @@ public class AddChoiceViewModel {
 		for (String choiceString : getChoices(step, choice)) {
 			System.out.println(choiceString);
 		}
+		System.out.println();
 	}
 
+	@SuppressWarnings("unchecked")
 	public ArrayList<String> getChoices(int step, int choice) {
-		System.out.println(step);
-		if (data.containsKey(String.valueOf(step))) {
-			JSONObject levelObject = (JSONObject) data.get(String.valueOf(step));
+		choiceList.clear();
+		String steps=String.valueOf(step);
+		String choices=String.valueOf(choice);
+		
+		if (data.containsKey(steps)) {
+			JSONObject levelObject = (JSONObject) data.get(steps);
 
-			if (levelObject.containsKey(String.valueOf(choice))) {
-				Object optionsObject = levelObject.get(String.valueOf(choice));
+			if (levelObject.containsKey(choices)) {
+				Object optionsObject = levelObject.get(choices);
 
 				if (optionsObject instanceof JSONArray) {
 					choiceList.addAll((JSONArray) optionsObject);
